@@ -23,23 +23,26 @@ class Solution(object):
         """
         maxs_k = []
         for i, num in enumerate(nums):
-            if len(maxs_k) < 1:
+            maxs_k_length = len(maxs_k)
+            if maxs_k_length < 1:
                 maxs_k.append(num)
-            elif len(maxs_k) < k:
+            elif maxs_k_length < k:
                 for j, max_k in enumerate(maxs_k):
                     if num >= max_k:
                         maxs_k.insert(j+1, num)
                         break
-                if j == len(maxs_k):
-                    maxs_k.insert(0, num)
+                if j == maxs_k_length-1:
+                    maxs_k.insert(1, num)
             else:
                 for j, max_k in enumerate(maxs_k):
                     if num >= max_k:
                         maxs_k.insert(j + 1, num)
                         maxs_k.pop(0)
                         break
-                if j == len(maxs_k):
-                    maxs_k.insert(0, num)
+                if j == maxs_k_length-1:
+                    maxs_k.insert(1, num)
                     maxs_k.pop(0)
         return maxs_k[-1]
 
+s = Solution()
+a = s.findKthLargest2([3,2,1,5,6,4], 2)
