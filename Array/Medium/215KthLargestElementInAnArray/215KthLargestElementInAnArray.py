@@ -103,7 +103,7 @@ class Solution(object):
 
     def quicksort(self, nums, left, right):
         # 真的是要递归，递归前半段和后半段
-        if left <= right:      # 这里的等于只会影响len(nums)=1的时候
+        if left <= right:      # 这里的等于只会影响len(nums)=1的时候吗，这里又用到了递归
             pivot_index = self.partition(nums, left, right)
             self.quicksort(nums, left, pivot_index-1)
             self.quicksort(nums, pivot_index+1, right)
